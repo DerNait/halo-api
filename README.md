@@ -1,75 +1,128 @@
 
-# 🏆 La Liga Tracker API
+# 🏆 LeagueMatches API
 
-API desarrollada en Laravel para gestionar partidos de una liga de fútbol.  
-Permite crear, visualizar, actualizar y eliminar partidos a través de endpoints RESTful.
+API desarrollada en Laravel para gestionar los partidos de una liga.  
+Esta API permite crear, visualizar, actualizar y eliminar partidos mediante endpoints RESTful.
 
----
-
-## 🖼️ Vista del Frontend
-
-![La Liga Tracker Frontend](image.png)
+![LeagueMatches Frontend](image.png)
 
 ---
 
 ## 📦 Tecnologías utilizadas
 
-- Laravel 10+
-- PostgreSQL
-- Docker & Docker Compose
-- Nginx (para producción)
-- Certificados SSL (Let's Encrypt o manual)
+- **Laravel 10+**  
+- **PostgreSQL**  
+- **Docker & Docker Compose**  
+- **Nginx** (para producción)  
+- **SSL** (certificados manuales o Let's Encrypt)
 
 ---
 
 ## 🚀 Endpoints de la API
 
-### Obtener todos los partidos
-```
-GET /api/matches
+- **GET /api/matches**  
+  Obtener todos los partidos.
+
+- **GET /api/matches/{id}**  
+  Obtener un partido por ID.
+
+- **POST /api/matches**  
+  Crear un nuevo partido.
+
+- **PUT /api/matches/{id}**  
+  Actualizar un partido existente.
+
+- **DELETE /api/matches/{id}**  
+  Eliminar un partido.
+
+---
+
+## 🛠️ Estructura del Proyecto
+
+- `/app/Http/Controllers/LeagueMatchController.php`: Controlador con la lógica de los partidos.
+- `/routes/api.php`: Definición de rutas del API.
+- Archivos de configuración Docker:  
+  - `Dockerfile` (producción)  
+  - `Dockerfile.dev` (desarrollo)  
+  - `docker-compose.yml`  
+  - `docker-compose.override.yml`  
+- Archivos de entorno:  
+  - `.env.example` (incluye la configuración para correr localmente)
+
+---
+
+## 🚧 Despliegue y Ejecución Local
+
+### 1. Clonar el repositorio
+
+```bash
+cd /ruta/donde/quieras/guardar/el/proyecto
+git clone https://github.com/tu-usuario/tu-repo.git league-matches-api
+cd league-matches-api
 ```
 
-### Obtener un partido por ID
-```
-GET /api/matches/{id}
+### 2. Configurar variables de entorno
+
+Copia el archivo de ejemplo y edítalo:
+
+```bash
+cp .env.example .env
+nano .env
 ```
 
-### Crear un nuevo partido
-```
-POST /api/matches
+Verifica (o ajusta) estos valores para desarrollo:
+
+```dotenv
+APP_NAME=LeagueMatches
+APP_ENV=local
+APP_KEY=         # Se generará con artisan
+APP_DEBUG=true
+APP_URL=http://localhost:8100
+
+DB_CONNECTION=pgsql
+DB_HOST=postgres_database
+DB_PORT=5432
+DB_DATABASE=league
+DB_USERNAME=admin
+DB_PASSWORD=12345
 ```
 
-### Actualizar un partido existente
-```
-PUT /api/matches/{id}
+### 3. Levantar los contenedores
+
+```bash
+docker compose up --build -d
 ```
 
-### Eliminar un partido
+### 4. Verificar contenedores y ejecutar comandos de Laravel
+
+```bash
+docker ps
+docker compose exec app php artisan migrate
+docker compose exec app php artisan config:cache
+docker compose exec app php artisan key:generate
 ```
-DELETE /api/matches/{id}
+
+### 5. Acceder a la API
+
+```
+http://localhost:8100
 ```
 
 ---
 
-## 🛠️ Estructura del proyecto
+## ⚙️ Archivos de Configuración Docker
 
-- `/app/Http/Controllers/LeagueMatchController.php`: controlador principal para manejar la lógica de los partidos.
-- `/routes/api.php`: definición de rutas del API.
-
----
-
-## ⚙️ Despliegue con Docker
-
-Para desplegar este proyecto, usá el archivo `DEPLOY.md` incluido con todos los pasos necesarios para levantarlo en producción, incluyendo Nginx, SSL, PostgreSQL y Laravel en Docker.
+Incluye ejemplos para `docker-compose.yml`, `docker-compose.override.yml` y `.env.example`
 
 ---
 
-## 💻 Frontend
+## 📄 Notas adicionales
 
-El frontend es una interfaz HTML local para interactuar con esta API. Se descarga como `LaLigaTracker.html` en las instrucciones del laboratorio.
+- Consulta `DEPLOY.md` para despliegue en producción
+- Usa SSH para conectar con la base de datos desde herramientas externas como TablePlus
 
 ---
 
 ## 🧑‍💻 Autor
 
-Desarrollado por Kevin (a.k.a. DerNait) para prácticas de Sistemas y Tecnologías Web.
+Desarrollado por Kevin (a.k.a. DerNait)
