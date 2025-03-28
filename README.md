@@ -19,21 +19,31 @@ Esta API permite crear, visualizar, actualizar y eliminar partidos mediante endp
 ---
 
 ## 🚀 Endpoints de la API
+  
+- Obtener todos los partidos.
+```bash
+GET /api/matches
+```
 
-- **GET /api/matches**  
-  Obtener todos los partidos.
+- Obtener un partido por ID.
+```bash
+GET /api/matches/{id}
+```
 
-- **GET /api/matches/{id}**  
-  Obtener un partido por ID.
+- Crear un nuevo partido.
+```bash
+POST /api/matches
+```
 
-- **POST /api/matches**  
-  Crear un nuevo partido.
+- Actualizar un partido existente.
+```bash
+PUT /api/matches/{id}
+```
 
-- **PUT /api/matches/{id}**  
-  Actualizar un partido existente.
-
-- **DELETE /api/matches/{id}**  
-  Eliminar un partido.
+- Eliminar un partido.
+```bash
+DELETE /api/matches/{id}
+```
 
 ---
 
