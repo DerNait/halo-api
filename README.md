@@ -66,7 +66,7 @@ Para desplegar este proyecto, usá el archivo `DEPLOY.md` incluido con todos los
 
 ## 💻 Frontend
 
-El frontend es una interfaz HTML local para interactuar con esta API. Se encuentra dentro del repositorio o como archivo local en `Lab6/LaLigaTracker.html`.
+El frontend es una interfaz HTML local para interactuar con esta API. Se descarga como `LaLigaTracker.html` en las instrucciones del laboratorio.
 
 ---
 
