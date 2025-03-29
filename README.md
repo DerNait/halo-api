@@ -52,9 +52,9 @@ LeagueMatches API permite crear, visualizar, actualizar y eliminar partidos usan
 ### Built With
 
 * [![Laravel][Laravel.com]][Laravel-url]
-* [PostgreSQL](https://www.postgresql.org/)
-* [Docker](https://www.docker.com/)
-* [Nginx](https://www.nginx.com/)
+* [![PostgreSQL][PostgreSQL.com]][PostgreSQL-url]
+* [![Docker][Docker.com]][Docker-url]
+* [![Nginx][Nginx.com]][Nginx-url]
 
 <p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
