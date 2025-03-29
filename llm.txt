@@ -1,0 +1,121 @@
+League Matches API - Documentación LLM
+
+Este archivo describe el uso del API RESTful para la gestión de partidos de liga.
+
+---
+RUTAS DISPONIBLES
+------------------
+
+GET /api/matches
+- Obtener todos los partidos.
+
+GET /api/matches/{id}
+- Obtener un partido por ID.
+
+POST /api/matches
+- Crear un nuevo partido.
+- Campos requeridos: homeTeam (string), awayTeam (string), matchDate (fecha YYYY-MM-DD).
+
+PUT /api/matches/{id}
+- Actualizar un partido existente.
+- Campos opcionales: homeTeam, awayTeam, matchDate.
+
+DELETE /api/matches/{id}
+- Eliminar un partido por ID.
+
+PATCH /api/matches/{id}/goals
+- Sumar +1 gol al partido.
+
+PATCH /api/matches/{id}/yellowcards
+- Registrar +1 tarjeta amarilla.
+
+PATCH /api/matches/{id}/redcards
+- Registrar +1 tarjeta roja.
+
+PATCH /api/matches/{id}/extratime
+- Registrar +5 minutos de tiempo extra.
+
+---
+RESPUESTAS
+----------
+- 200 OK: Operación exitosa.
+- 201 Created: Registro creado.
+- 404 Not Found: El recurso no existe.
+- 422 Validation Error: Datos faltantes o mal formateados.
+
+---
+EJEMPLO DE CREACIÓN (POST /api/matches)
+----------------------------------------
+Request:
+POST /api/matches
+Content-Type: application/json
+
+{
+    "homeTeam": "Team A",
+    "awayTeam": "Team B",
+    "matchDate": "2025-04-01"
+}
+
+Response:
+{
+    "message": "Registro creado con exito",
+    "match": {
+        "id": 1,
+        "home_team": "Team A",
+        "away_team": "Team B",
+        "match_date": "2025-04-01",
+        "goals": 0,
+        "yellowcards": 0,
+        "redcards": 0,
+        "extratime": 0
+    }
+}
+
+---
+EJEMPLOS CURL
+-------------
+
+Crear un partido:
+curl -X POST http://localhost:8000/api/matches \
+     -H "Content-Type: application/json" \
+     -d '{"homeTeam": "Team A", "awayTeam": "Team B", "matchDate": "2025-04-01"}'
+
+Obtener todos los partidos:
+curl http://localhost:8000/api/matches
+
+Actualizar un partido:
+curl -X PUT http://localhost:8000/api/matches/1 \
+     -H "Content-Type: application/json" \
+     -d '{"homeTeam": "Nuevo Team", "matchDate": "2025-04-02"}'
+
+Sumar un gol:
+curl -X PATCH http://localhost:8000/api/matches/1/goals
+
+Agregar tarjeta roja:
+curl -X PATCH http://localhost:8000/api/matches/1/redcards
+
+Agregar tiempo extra:
+curl -X PATCH http://localhost:8000/api/matches/1/extratime
+
+Eliminar un partido:
+curl -X DELETE http://localhost:8000/api/matches/1
+
+---
+NOTA
+----
+Este API no requiere autenticación por defecto.
+Si se implementa en producción, se recomienda agregar protección mediante tokens (ej: JWT o Passport).
+
+---
+MODELO DE PARTIDO (LeagueMatch)
+-------------------------------
+{
+    "id": int,
+    "home_team": string,
+    "away_team": string,
+    "match_date": string (formato YYYY-MM-DD),
+    "goals": int,
+    "yellowcards": int,
+    "redcards": int,
+    "extratime": int
+}
