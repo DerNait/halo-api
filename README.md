@@ -7,7 +7,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/DerNait/halo-api">
-    <img src="logo.png" alt="Logo" width="80" height="80">
+    <img src="logo.png" alt="Logo" width="400" height="400">
   </a>
 
 <h3 align="center">LeagueMatches API</h3>
