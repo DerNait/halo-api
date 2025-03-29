@@ -1,0 +1,287 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "League Matches API",
+        "description": "Documentación Swagger para la API de gestión de partidos de liga",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api",
+            "description": "API base"
+        }
+    ],
+    "paths": {
+        "/matches": {
+            "get": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Obtener todos los partidos.",
+                "operationId": "29af97d5b5aee1ea124a891971f9caa9",
+                "responses": {
+                    "200": {
+                        "description": "Lista de partidos."
+                    },
+                    "404": {
+                        "description": "No se encontraron registros."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Crear un nuevo partido.",
+                "operationId": "d36118fdbbd35375e1bd24cd3c3debfa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "homeTeam",
+                                    "awayTeam",
+                                    "matchDate"
+                                ],
+                                "properties": {
+                                    "homeTeam": {
+                                        "type": "string"
+                                    },
+                                    "awayTeam": {
+                                        "type": "string"
+                                    },
+                                    "matchDate": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Partido creado."
+                    },
+                    "422": {
+                        "description": "Error de validación."
+                    }
+                }
+            }
+        },
+        "/matches/{id}": {
+            "get": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Obtener un partido por ID.",
+                "operationId": "98d06d73970e4d714fea00456256b96e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Partido encontrado."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Actualizar un partido existente.",
+                "operationId": "7c0f92884483cc681d669fb48d447039",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "homeTeam": {
+                                        "type": "string"
+                                    },
+                                    "awayTeam": {
+                                        "type": "string"
+                                    },
+                                    "matchDate": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Partido actualizado."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Eliminar un partido.",
+                "operationId": "a1e1658842498456755540c18afeb9cd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Partido eliminado."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            }
+        },
+        "/matches/{id}/goals": {
+            "patch": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Actualizar los goles de un partido.",
+                "operationId": "fdafdbcdde95a675567052415e32f393",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Goles actualizados."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            }
+        },
+        "/matches/{id}/yellowcards": {
+            "patch": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Registrar una tarjeta amarilla.",
+                "operationId": "4e7e0ea3ec316627ef368e3b36b326a1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarjeta amarilla registrada."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            }
+        },
+        "/matches/{id}/redcards": {
+            "patch": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Registrar una tarjeta roja.",
+                "operationId": "5194af0ac83c1a1f56e6e84257e01dc5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tarjeta roja registrada."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            }
+        },
+        "/matches/{id}/extratime": {
+            "patch": {
+                "tags": [
+                    "Matches"
+                ],
+                "summary": "Registrar el tiempo extra del partido.",
+                "operationId": "4d0af71e067115ea934bcfe898475a64",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tiempo extra registrado."
+                    },
+                    "404": {
+                        "description": "Partido no encontrado."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Matches",
+            "description": "Matches"
+        }
+    ]
+}

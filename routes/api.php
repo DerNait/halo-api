@@ -20,3 +20,7 @@ Route::get('matches/{id}', [LeagueMatchController::class, 'show']);
 Route::post('matches', [LeagueMatchController::class, 'store']);
 Route::put('matches/{id}', [LeagueMatchController::class, 'update']);
 Route::delete('matches/{id}', [LeagueMatchController::class, 'destroy']);
+Route::patch('matches/{id}/goals', [LeagueMatchController::class, 'addGoal']);
+Route::patch('matches/{id}/yellowcards', [LeagueMatchController::class, 'addYellowCard']);
+Route::patch('matches/{id}/redcards', [LeagueMatchController::class, 'addRedCard']);
+Route::patch('matches/{id}/extratime', [LeagueMatchController::class, 'addExtraTime']);
