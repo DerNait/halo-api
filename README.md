@@ -178,3 +178,12 @@ Proyecto: [LeagueMatches API](https://github.com/DerNait/league-matches-api)
 [contributors-url]: https://github.com/DerNait/
 
 [product-screenshot]: image.png
+
+[PostgreSQL.com]: https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white
+[PostgreSQL-url]: https://www.postgresql.org/
+
+[Docker.com]: https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+
+[Nginx.com]: https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white
+[Nginx-url]: https://www.nginx.com/
